@@ -24,7 +24,7 @@ class _MyHomeState extends State<MyHome> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => const QRViewExample(),
             ));
           },
@@ -77,7 +77,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                         controller?.pauseCamera();
                         WidgetsBinding.instance?.addPostFrameCallback((_) {
                           // Navigator.push(context, MaterialPageRoute(builder: (context) => Home(message: '${result!.code}',)));
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => Home(message: DateTime.now().toString()),
