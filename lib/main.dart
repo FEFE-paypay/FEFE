@@ -71,14 +71,18 @@ class _QRViewExampleState extends State<QRViewExample> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  if (result != null)
-
-                    // Text(
-                    //     'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+                  if (result != null)                    
                     Builder(
                       builder: (context) {
+                        controller?.pauseCamera();
                         WidgetsBinding.instance?.addPostFrameCallback((_) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => Home(message: '${result!.code}',)));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Home(message: DateTime.now().toString()),
+                            ),
+                          );
                         });
                         return Text(
                           'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',

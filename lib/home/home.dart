@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  final String message;
+  const Home({Key? key, required this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Text("QR코드 인식된 상태입니다"),
+      body: Text(message),
     );
   }
 }
