@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:fe/home/home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -71,8 +72,19 @@ class _QRViewExampleState extends State<QRViewExample> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   if (result != null)
-                    Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+
+                    // Text(
+                    //     'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+                    Builder(
+                      builder: (context) {
+                        WidgetsBinding.instance?.addPostFrameCallback((_) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+                        });
+                        return Text(
+                          'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
+                        );
+                      },
+                    )
                   else
                     const Text('Scan a code'),
                   Row(
