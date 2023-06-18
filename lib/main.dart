@@ -6,44 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 void main() => runApp(const MaterialApp(home: MyHome()));
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
 
-  var tempUser = ["사장", "김찬희", "28", "남"];
-  var tempMenu = [
-    {
-      "카레",
-      "2000",
-    },
-    {
-      "카레",
-      "3000",
-    },
-    {
-      "카레",
-      "4000",
-    },
-    {
-      "카레",
-      "5000",
-    },
-    {
-      "카레",
-      "6000",
-    },
-    {
-      "카레",
-      "7000",
-    },
-    {
-      "카레",
-      "8000",
-    },
-    {
-      "카레",
-      "9000",
-    }
-  ];
+  @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+
 
   @override
   Widget build(BuildContext context) {
