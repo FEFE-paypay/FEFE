@@ -312,10 +312,10 @@ class _HomeState extends State<Home> {
           ),
           Container(
             width: double.infinity,
-            height: 100,
             color: Colors.white54,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
                     onPressed: () {
