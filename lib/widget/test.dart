@@ -1,78 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
-class MyPage extends StatefulWidget {
-  const MyPage({Key? key}) : super(key: key);
-
+class LoginPage extends StatefulWidget {
   @override
-  _MyPageState createState() => _MyPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _MyPageState extends State<MyPage> {
-  int _selectedSegment = 0;
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Page'),
-        backgroundColor: Colors.blue, // 배경색 설정
+        title: Text('Login Page'),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedSegment = 0;
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary:
-                    _selectedSegment == 0 ? Colors.blue : Colors.grey,
-                  ),
-                  child: const Text('Midnight'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedSegment = 1;
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary:
-                    _selectedSegment == 1 ? Colors.blue : Colors.grey,
-                  ),
-                  child: const Text('Viridian'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedSegment = 2;
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary:
-                    _selectedSegment == 2 ? Colors.blue : Colors.grey,
-                  ),
-                  child: const Text('Cerulean'),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Center(
-              child: Text(
-                'Selected Segment: $_selectedSegment',
-                style: const TextStyle(color: Colors.black),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                labelText: 'Username',
               ),
             ),
-          ),
-        ],
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                String username = _usernameController.text;
+                String password = _passwordController.text;
+                // Perform login validation here
+                if (username == 'admin' && password == 'password') {
+                  // Login successful
+                  Navigator.pushNamed(context, '/home');
+                } else {
+                  // Login failed
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Error'),
+                      content: Text('Invalid username or password.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+              child: Text('Login'),
+            ),
+          ],
+        ),
       ),
     );
   }
