@@ -31,10 +31,10 @@ class _HomeState extends State<Home> {
       body:
 
       //    SliverAppBar
-      // HiddenAppBar(),
+      HiddenAppBar(),
       
       //기존
-      Normal(),
+      // Normal(),
 
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),

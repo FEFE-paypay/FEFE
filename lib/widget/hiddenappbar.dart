@@ -22,14 +22,14 @@ class _HiddenAppBarState extends State<HiddenAppBar> {
             // Function callback for stretch
             return Future<void>.value();
           },
-          toolbarHeight: 100,
-          expandedHeight: 100.0,
+          toolbarHeight: 500,
+          expandedHeight: 300.0,
           backgroundColor: Colors.transparent,
           flexibleSpace: FlexibleSpaceBar(
             stretchModes: const <StretchMode>[
-              // StretchMode.zoomBackground,
+              StretchMode.zoomBackground,
               // StretchMode.blurBackground,
-              // StretchMode.fadeTitle,
+              StretchMode.fadeTitle,
             ],
             centerTitle: true,
             background: Stack(
