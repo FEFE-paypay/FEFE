@@ -10,118 +10,75 @@ class HiddenAppBar extends StatefulWidget {
 }
 
 class _HiddenAppBarState extends State<HiddenAppBar> {
+
+  List<String> images = [
+    "lib/image/advertisement1.png",
+    "lib/image/advertisement2.png",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      slivers: <Widget>[
+      slivers: [
         SliverAppBar(
-          stretch: true,
-          onStretchTrigger: () {
-            // Function callback for stretch
-            return Future<void>.value();
-          },
-          toolbarHeight: 500,
-          expandedHeight: 300.0,
-          backgroundColor: Colors.transparent,
-          flexibleSpace: FlexibleSpaceBar(
-            stretchModes: const <StretchMode>[
-              StretchMode.zoomBackground,
-              // StretchMode.blurBackground,
-              StretchMode.fadeTitle,
+          floating: false,
+          snap: false,
+          pinned: true,
+          // expandedHeight: 172.0,
+          expandedHeight: 172.0,
+          toolbarHeight: 50.0,
+          // actionsIconTheme: IconThemeData(opacity: 0.0),
+          flexibleSpace: Stack(
+            fit: StackFit.expand,
+            children: [
+              // Image.asset(
+              //   images[0],
+              //   fit: BoxFit.cover,
+              // ),
+              PageView.builder(
+                  itemCount: 2,
+                  pageSnapping: true,
+                  itemBuilder: (context,pagePosition){
+                    return Container(
+                        child: Image.asset(images[pagePosition]));
+                  }),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //       colors: [Colors.transparent, Colors.black.withOpacity(0.5)],
+              //       begin: Alignment.topCenter,
+              //       end: Alignment.bottomCenter,
+              //     ),
+              //   ),
+              // ),
             ],
-            centerTitle: true,
-            background: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                Image.network(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-                  fit: BoxFit.cover,
-                )
-                // SliderWedget()
-                ,
-                // const DecoratedBox(
-                //   decoration: BoxDecoration(
-                //     gradient: LinearGradient(
-                //       begin: Alignment(0.0, 0.5),
-                //       end: Alignment.center,
-                //       colors: <Color>[
-                //         Color(0x60000000),
-                //         Color(0x00000000),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
           ),
+          // FlexibleSpaceBar(
+          //   centerTitle: true,
+          //   background:
+          //   PageView.builder(
+          //       itemCount: 2,
+          //       pageSnapping: true,
+          //       itemBuilder: (context,pagePosition){
+          //         return Container(
+          //             child:Image.asset(
+          //               images[pagePosition],
+          //             ));
+          //       }),
+          // ),
         ),
         SliverList(
-          delegate: SliverChildListDelegate(
-            const <Widget>[
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Sunday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              // ListTiles++
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-              ListTile(
-                leading: Icon(Icons.wb_sunny),
-                title: Text('Monday'),
-                subtitle: Text('sunny, h: 80, l: 65'),
-              ),
-            ],
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Container(
+                color: index.isOdd ? Colors.white : Colors.grey,
+                height: 100.0,
+                child: Center(
+                  child: Text('$index', textScaleFactor: 5),
+                ),
+              );
+            },
+            childCount: 10,
           ),
         ),
       ],
