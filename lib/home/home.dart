@@ -1,3 +1,4 @@
+import 'package:fe/event/event.dart';
 import 'package:fe/widget/hiddenappbar.dart';
 import 'package:fe/widget/menu_review_info_button.dart';
 import 'package:fe/widget/normal.dart';
@@ -17,7 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
+//dd
   int _currentIndex = 2;
 
 
@@ -79,7 +80,13 @@ class _HomeState extends State<Home> {
                   BottomNavigationBarItem(
                       icon: Container(
                         margin: EdgeInsets.symmetric(vertical: 1.0),
-                        child: Icon(Icons.event),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Event(),)
+                            );
+                          },
+                          icon: Icon(Icons.event),
+                        )
                       ),
                       label: '이벤트'),
                   BottomNavigationBarItem(
