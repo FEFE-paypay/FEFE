@@ -20,7 +20,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 //dd
   int _currentIndex = 2;
-
+  ScrollController scrollController= ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,87 +28,82 @@ class _HomeState extends State<Home> {
       statusBarIconBrightness: Brightness.dark,
       statusBarColor: Colors.transparent,
     ));
-    return Scaffold(
-      body:
+    return SafeArea(
+      child: Scaffold(
 
-      //    SliverAppBar
-      HiddenAppBar(),
-      
       //기존
-      // Normal(),
+        // Normal(),
 
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
-        clipBehavior: Clip.antiAlias,
-        child: Container(
-          height: kBottomNavigationBarHeight,
+        bottomNavigationBar: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          notchMargin: 8.0,
+          clipBehavior: Clip.antiAlias,
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                top: BorderSide(
-                  color: Colors.grey,
-                  width: 0.5,
+            height: kBottomNavigationBarHeight,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.grey,
+                    width: 0.5,
+                  ),
                 ),
               ),
-            ),
-            child: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                currentIndex: _currentIndex,
-                backgroundColor: Colors.yellow,
-                selectedItemColor: Colors.black,
-                onTap: (index) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-                items: [
-                  BottomNavigationBarItem(
-                      icon: Container(
-                        margin: EdgeInsets.symmetric(vertical: 1.0),
-                        child: Icon(Icons.qr_code),
-                      ),
-                      label: 'QR스캔'),
-                  BottomNavigationBarItem(
-                      icon: Container(
-                        margin: EdgeInsets.symmetric(vertical: 1.0),
-                        child: Icon(Icons.search),
-                      ),
-                      label: 'Search'),
-                  BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-                  BottomNavigationBarItem(
-                      icon: Container(
-                        margin: EdgeInsets.symmetric(vertical: 1.0),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Event(),)
-                            );
-                          },
-                          icon: Icon(Icons.event),
-                        )
-                      ),
-                      label: '이벤트'),
-                  BottomNavigationBarItem(
-                      icon: Container(
-                        margin: EdgeInsets.symmetric(vertical: 1.0),
-                        child: Icon(Icons.person),
-                      ),
-                      label: '개인정보'),
-                ]),
-          ),
+              child: BottomNavigationBar(
+                  type: BottomNavigationBarType.fixed,
+                  currentIndex: _currentIndex,
+                  backgroundColor: Colors.yellow,
+                  selectedItemColor: Colors.black,
+                  onTap: (index) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                  items: [
+                    BottomNavigationBarItem(
+                        icon: Container(
+                          margin: EdgeInsets.symmetric(vertical: 1.0),
+                          child: Icon(Icons.qr_code),
+                        ),
+                        label: 'QR스캔'),
+                    BottomNavigationBarItem(
+                        icon: Container(
+                          margin: EdgeInsets.symmetric(vertical: 1.0),
+                          child: Icon(Icons.search),
+                        ),
+                        label: 'Search'),
+                    BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+                    BottomNavigationBarItem(
+                        icon: Container(
+                          margin: EdgeInsets.symmetric(vertical: 1.0),
+                          child: IconButton(onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => Home(message: "message"),
+                            ));
+                          }, icon: Icon(Icons.event))
+                        ),
+                        label: '이벤트'),
+                    BottomNavigationBarItem(
+                        icon: Container(
+                          margin: EdgeInsets.symmetric(vertical: 1.0),
+                          child: Icon(Icons.person),
+                        ),
+                        label: '개인정보'),
+                  ]),
+            ),            
         ),
-      ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FloatingActionButton(
-          backgroundColor: _currentIndex == 2 ? Colors.yellowAccent : Colors.yellow,
-          child: Icon(Icons.shopping_bag_outlined,color: Colors.black),
-          onPressed: () => setState(() {
-            _currentIndex = 2;
-          }),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniCenterDocked,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FloatingActionButton(
+            backgroundColor: _currentIndex == 2 ? Colors.yellowAccent : Colors.yellow,
+            child: Icon(Icons.shopping_bag_outlined,color: Colors.black),
+            onPressed: () => setState(() {
+              _currentIndex = 2;
+            }),
+          ),
         ),
       ),
     );
