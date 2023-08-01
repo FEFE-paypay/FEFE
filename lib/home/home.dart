@@ -1,3 +1,4 @@
+import 'package:fe/event/event.dart';
 import 'package:fe/widget/hiddenappbar.dart';
 import 'package:fe/widget/menu_review_info_button.dart';
 import 'package:fe/widget/normal.dart';
@@ -17,7 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
+//dd
   int _currentIndex = 2;
   ScrollController scrollController= ScrollController();
 
@@ -90,8 +91,7 @@ class _HomeState extends State<Home> {
                         ),
                         label: '개인정보'),
                   ]),
-            ),
-          ),
+            ),            
         ),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterDocked,
