@@ -51,6 +51,16 @@ class _ScannerPageState extends State<ScannerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.keyboard_backspace),
+            color: Color(0xff000000)),
+        title: Text("QR스캔"),
+        centerTitle: true,
+        titleTextStyle: TextStyle(color: Color(0xff000000), fontSize: 20),
+        backgroundColor: Color(0xffFEE500),
+      ),
       body: Column(
         children: <Widget>[
           Expanded(flex: 4, child: _buildQrView(context)),
@@ -72,103 +82,18 @@ class _ScannerPageState extends State<ScannerPage> {
                   'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
                 );
               },
-            )
-          // Expanded(
-          //   flex: 1,
-          //   child: FittedBox(
-          //     fit: BoxFit.contain,
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //       children: <Widget>[
-          //         if (result != null)
-          //           Builder(
-          //             builder: (context) {
-          //               controller?.pauseCamera();
-          //               WidgetsBinding.instance?.addPostFrameCallback((_) {
-          //                 // Navigator.push(context, MaterialPageRoute(builder: (context) => Home(message: '${result!.code}',)));
-          //                 Navigator.pushReplacement(
-          //                   context,
-          //                   MaterialPageRoute(
-          //                     builder: (context) =>
-          //                         Home(message: DateTime.now().toString()),
-          //                   ),
-          //                 );
-          //               });
-          //               return Text(
-          //                 'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
-          //               );
-          //             },
-          //           )
-          //         else
-          //           Row(
-          //             mainAxisAlignment: MainAxisAlignment.center,
-          //             crossAxisAlignment: CrossAxisAlignment.center,
-          //             children: <Widget>[
-          //               Container(
-          //                 margin: const EdgeInsets.all(8),
-          //                 child: ElevatedButton(
-          //                     onPressed: () async {
-          //                       await controller?.toggleFlash();
-          //                       setState(() {});
-          //                     },
-          //                     child: FutureBuilder(
-          //                       future: controller?.getFlashStatus(),
-          //                       builder: (context, snapshot) {
-          //                         return Text('Flash: ${snapshot.data}');
-          //                       },
-          //                     )),
-          //               ),
-          //               Container(
-          //                 margin: const EdgeInsets.all(8),
-          //                 child: ElevatedButton(
-          //                     onPressed: () async {
-          //                       await controller?.flipCamera();
-          //                       setState(() {});
-          //                     },
-          //                     child: FutureBuilder(
-          //                       future: controller?.getCameraInfo(),
-          //                       builder: (context, snapshot) {
-          //                         if (snapshot.data != null) {
-          //                           return Text(
-          //                               'Camera facing ${describeEnum(snapshot.data!)}');
-          //                         } else {
-          //                           return const Text('loading');
-          //                         }
-          //                       },
-          //                     )),
-          //               )
-          //             ],
-          //           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: <Widget>[
-          //     Container(
-          //       margin: const EdgeInsets.all(8),
-          //       child: ElevatedButton(
-          //         onPressed: () async {
-          //           await controller?.pauseCamera();
-          //         },
-          //         child: const Text('pause',
-          //             style: TextStyle(fontSize: 20)),
-          //       ),
-          //     ),
-          //     Container(
-          //       margin: const EdgeInsets.all(8),
-          //       child: ElevatedButton(
-          //         onPressed: () async {
-          //           await controller?.resumeCamera();
-          //         },
-          //         child: const Text('resume',
-          //             style: TextStyle(fontSize: 20)),
-          //       ),
-          //     )
-          //   ],
-          // ),
-          // ],
-          // ),
-          // ),
-          // )
+            ),
+          Container(
+            height: 80,
+            width: double.infinity,
+            color: Color(0xffFEE500),
+            child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  "내정보",
+                  style: TextStyle(color: Color(0xff000000), fontSize: 20),
+                )),
+          )
         ],
       ),
     );
