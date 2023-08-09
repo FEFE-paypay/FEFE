@@ -12,6 +12,7 @@ class _joinState extends State<join> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _usernameController = TextEditingController();
+    // test
     TextEditingController _passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
@@ -86,13 +87,16 @@ class _joinState extends State<join> {
                       // 버튼이 클릭되었을 때의 동작
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey), // 배경 색상
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.grey), // 배경 색상
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0), // 둥근 모서리 설정
+                          borderRadius:
+                              BorderRadius.circular(10.0), // 둥근 모서리 설정
                         ),
                       ),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     child: Text('중복체크'),
                   )
@@ -115,13 +119,16 @@ class _joinState extends State<join> {
                       // 버튼이 클릭되었을 때의 동작
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey), // 배경 색상
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.grey), // 배경 색상
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0), // 둥근 모서리 설정
+                          borderRadius:
+                              BorderRadius.circular(10.0), // 둥근 모서리 설정
                         ),
                       ),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     child: Text('중복체크'),
                   )
@@ -153,9 +160,7 @@ class _joinState extends State<join> {
                 height: 25.0,
               ),
               ElevatedButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
                   backgroundColor: Color(0xffFEE500),
@@ -165,7 +170,6 @@ class _joinState extends State<join> {
                       color: Color(0xff000000),
                     )),
               ),
-              
             ],
           ),
         ),
