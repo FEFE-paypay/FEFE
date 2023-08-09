@@ -1,4 +1,6 @@
 import 'package:fe/home/home.dart';
+import 'package:fe/join/join.dart';
+import 'package:fe/main.dart';
 import 'package:flutter/material.dart';
 
 class login extends StatefulWidget {
@@ -18,7 +20,13 @@ class _loginState extends State<login> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>MyHome()),
+              );
+            },
             icon: Icon(Icons.keyboard_backspace),
             color: Color(0xff000000)),
         title: Text("로그인"),
@@ -35,7 +43,7 @@ class _loginState extends State<login> {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                 child: Container(
-                  height: 200,
+                  height: 120,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Color(0xffFEE500),
@@ -119,7 +127,9 @@ class _loginState extends State<login> {
                   SizedBox(
                     width: 120,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => join(),));
+                      },
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.black,
                       ),
